@@ -23,11 +23,13 @@ public class Player : MonoBehaviour
 
     public int extraJumpsValue = 1;
     private int extraJumps;
+    private Color originalColor;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
 
         extraJumps = extraJumpsValue;
     }
@@ -110,7 +112,7 @@ public class Player : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = originalColor;
     }
 
     private void Die()
